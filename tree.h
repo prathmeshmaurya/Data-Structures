@@ -1,7 +1,33 @@
 /*
-Making this a header file
-*/
+Generic Binary Tree
 
+Object Construction :-
+
+Method 1: 
+
+Tree<int> tree();
+tree.insert(1);
+
+Method 2:
+
+int arr[] = {1,2,3,4};
+Tree<int> tree(arr,4); // Argument 1: Array with Node values, Argument 2: size of the array
+
+Implemented Methods:
+
+1. insert(val) : inserts a 'val' according to the level order traversal.
+2. count(item) : Returns the count of item in tree.
+3. size()	   : Return the size (number of nodes) 	in the tree.
+4. isEmpty()   : Returns true if tree is empty.
+5. deleteTree(): Deletes the tree.
+6. levelOrder(): Prints the tree in levelorder fashion.
+7. preOrder()  : Prints the tree in preorder fashion.
+8. postOrder() : Prints the tree in postorder fashion.
+9. inOrder()   : Prints the tree in inorder fashio.
+10. getRoot()  : Returns a reference to the root of the tree which can be utilised to test custom written functions about tree
+				 operations like LCA, diameter, height, levelSum etc.
+
+*/
 
 template<class T>
  struct Node{
@@ -22,7 +48,7 @@ public:
 	}
 	Tree(T x){root = addNode(x);}
 
-	//Returns the size of the tree
+//Returns the size of the tree
 	int size(){
 	if(root == NULL)
 		return 0;
@@ -163,7 +189,7 @@ int count(T x){
 
 	}
 
-//Function to create new Node for a given value of int data.
+//Function to create new Node for a given value of T item.
 Node<T>* addNode(T x){
 	Node<T> *temp = new Node<T>();
 	temp->data = x;
@@ -173,7 +199,7 @@ Node<T>* addNode(T x){
 } 	
 
 
-//Insert x in the tree at suitable position (found by level order traversal)
+//Insert x in the tree at suitable position (found by level order traversal).
 void insert( T x){
 	if(!root){
 		root = addNode(x);
@@ -198,15 +224,13 @@ void insert( T x){
 	}	
 
 }
-//Overload insert() to populate the tree 
 
 //isEmpty() : Returns true if size == 0, else false
 bool isEmpty(){
 	return cnt == 0;
 }
 
-//Function to expose the root for use by other functions outside Tree class.
-
+//Expose the root of this tree.
 Node<T>* getRoot(){
 	return root;
 }
